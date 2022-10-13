@@ -74,6 +74,7 @@
   --color__davys-grey: #555;
   --color__isabelline: #FBF8F3;
   --color__light-cyan: #D7F5F5;
+  --color__light-grey: #ccc;
   --color__white: #fff;
   
 
@@ -140,7 +141,7 @@ html {font-size: var(--text__base);}
 
 body {
   background-color: var(--color__white);
-  color: var(--color__black);
+  color: var(--color__davys-grey);
   font-family: var(--font__stack);
   font-size: var(--text__preset-6);
   line-height: var(--leading__body);
@@ -170,6 +171,7 @@ a:not([class]), a {transition: var(--fx__ease-in-out);}
 button {font: inherit;}
 
 h1, h2, h3, h4, h5, h6 {
+  color: var(--color__black);
   font-family: var(--font__stack);
   font-weight: bold;
   line-height: var(--leading__headings);
@@ -184,7 +186,6 @@ h5 {font-size: var(--text__preset-5);}
 h6 {font-size: var(--text__preset-6);}
 
 hr {
-  background-color: var(--color__battleship-grey);
   border: none;
   display: block;
   height: 1px;
@@ -251,18 +252,23 @@ p {
 
 /* #LAYOUT ======================= *\
  *    #FEATURES
+ *    #HERO
+ *    #PRICING
  *    #SITE FOOTER
  *    #SITE HEADER
+ *    #TESTIMONIALS
 \* =============================== */
 
 /* #FEATURES --------------------- */
-.features {
+.features {padding: var(--p__layout);}
+.features__wrapper {
   display: grid;
   grid-gap: var(--gutter-md);
   gap: var(--gutter-md);
   grid-auto-rows: min-content;
   grid-template-columns: repeat(2, 1fr);
-  padding: var(--p__layout);
+  margin: 0 auto;
+  max-width: 87.5rem;
 }
   .features h2 {grid-column: 1/-1;}
 
@@ -276,7 +282,60 @@ p {
   .features {grid-template-columns: 1fr;}
 }
 
+
+
+
+
+/* #HERO ------------------------- */
+.hero__wrapper {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-gap: var(--gutter-lg);
+  gap: var(--gutter-lg);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  margin: 0 auto;
+  max-width: 87.5rem;
+  padding: var(--p__layout);
+}
+  .hero__body p span {
+    color: var(--color__cg-blue);
+    font-weight: bold;
+  }
+
+
+
+
+
+/* #PRICING ---------------------- */
+.pricing {
+  margin: 0 auto;
+  max-width: 87.5rem;
+  padding: var(--p__layout);
+}
+  .pricing__header {text-align: center;}
+
+  .pricing__breakdown {
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 37.5rem;
+    padding: var(--p__card);
+  }
+    .pricing__breakdown.theme__beige {border: 1px solid var(--color__bright-yellow-crayola);}
+
+
+
+
+
 /* #SITE FOOTER ------------------ */
+
+.site__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gutter-sm);
+  padding: 2em;
+}
 
 /* #SITE HEADER ------------------ */
 .site__header {
@@ -289,10 +348,83 @@ p {
 
 
 
+/* #TESTIMONIALS ----------------- */
+.testimonials {padding: var(--p__layout);}
+
+.testimonials__wrapper {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-gap: var(--gutter-md);
+  gap: var(--gutter-md);
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  margin: 0 auto;
+  max-width: 87.5rem;
+}
+  .testimonials h2 {grid-column: 1/-1;}
+
+  .testimonial {
+    border-radius: 8px;
+    padding: var(--p__card);
+  }
+
+    .testimonial__footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--gutter-sm);
+      margin: 1.25rem 0 0 0;
+    }
+      .testimonial__footer a {
+        display: flex;
+        flex-direction: row;
+        gap: var(--gutter-xs);
+        align-items: center;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .testimonial__footer p {
+        color: var(--color__battleship-grey);
+        margin: 0;
+      }
+
+    .testimonial__header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: var(--m__element);
+    }
+      .testimonial__author {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: var(--gutter-xs);
+      }
+        .testimonial__author h3 {
+          font-size: var(--text__preset-6);
+          margin: 0;
+        }
+        
+        .testimonial__author p {
+          color: var(--color__battleship-grey);
+          margin: 0;
+        }
+
+
+
+
+
 /* #COMPONENTS =================== *\
  *    #BUTTONS
+ *    #FEATURE ICONS
  *    #LOGO
  *    #NAVBAR
+ *    #PRICING LIST
+ *    #TWEET LINK
+ *    #USERS
 \* =============================== */
 
 /* #BUTTONS ---------------------- *\
@@ -300,6 +432,7 @@ p {
  *    #ICON ONLY BUTTON
  *    #ICON W/TEXT BUTTON
  *    #TEXT ONLY BUTTON
+ *    #BUTTON COLORS
 \* ------------------------------- */
 
 /* #BUTTON ----------------------- */
@@ -336,6 +469,10 @@ button.button:not(.icon-button) {
     width: 1rem;
   }
 
+
+
+
+
 /* #ICON W/TEXT BUTTON ----------- */
 .button__icon {
   height: 1em;
@@ -365,14 +502,54 @@ button.button:not(.icon-button) {
 
 
 
+/* #BUTTON COLORS ---------------- */
+.button__twitter {
+  background-color: var(--color__carolina-blue);
+  color: var(--color__white);
+}
+  .button__twitter:hover,
+  .button__twitter:focus {
+    background-color: var(--color__cg-blue);
+    color: var(--color__white);
+  }
+
+  .button__twitter:focus {
+    box-shadow: var(--focus__ring) var(--color__battleship-grey);
+    outline: var(--focus__outline);
+  }
+
+
+
+
+
+/* #FEATURE ICONS ---------------- */
+.feature__icon {
+  display: block;
+  fill: var(--color__azure);
+  margin: var(--m__element);
+}
+
+
+
+
+
 /* #LOGO ------------------------- */
 .logo {
+  color: var(--color__azure);
   display: block;
   font-size: var(--text__preset-5);
   font-style: italic;
   font-weight: bold;
   text-decoration: none;
 }
+  .logo:hover,
+  .logo:focus {
+    color: var(--color__black);
+  }
+    .logo:focus {
+      box-shadow: var(--focus__ring) var(--color__azure);
+      outline: var(--focus__outline);
+    }
 
 
 
@@ -385,18 +562,77 @@ button.button:not(.icon-button) {
   justify-content: space-between;
   gap: var(--gutter-xs);
 }
+  .navbar .nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    gap: var(--gutter-xs);
+  }
 
 @media (min-width: 40rem) {
   .nav__toggle {display: none !important;}
   
-  .nav__list {
-    display: flex;
+  .navbar .nav__list {
     flex-direction: row;
     justify-content: start;
     align-items: center;
     gap: var(--gutter-sm);
   }
 }
+
+
+
+
+
+/* #PRICING LIST ----------------- */
+ul.pricing__list {margin: var(--m__element);}
+  .pricing__list li::before {
+    content: "";
+    background-image: url(../assets/icons/icon-checkmark.svg);
+    background-size: contain;
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    position: relative;
+    top: .25rem;
+    margin-right: 1rem;
+  }
+
+.pricing__button {width: 100%;}
+
+
+
+
+
+/* #TWEET LINK ------------------- */
+.tweet__link {color: var(--color__carolina-blue);}
+  .tweet__link:hover, 
+  .tweet__link:focus {
+    color: var(--color__cg-blue);
+  }
+    .tweet__link:focus {
+      box-shadow: var(--focus__ring) var(--color__cg-blue);
+      outline: var(--focus__outline);
+    }
+
+
+
+
+
+/* #USERS ------------------------ */
+.users {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin: 1.25rem 0;
+}
+  .users img {
+    box-shadow: 0 0 0 2px var(--color__white);
+    border-radius: 50%;
+    margin-left: -1.25rem;
+  }
+    .users img:first-of-type {margin-left: 0;}
 
 
 
@@ -412,6 +648,18 @@ button.button:not(.icon-button) {
 .theme__beige {
   background-color: var(--color__isabelline);
 }
+  .theme__beige.pricing__breakdown h3 {
+    font-size: var(--text__preset-1);
+  }
+
+  .theme__beige.pricing__breakdown h3 span {
+    color: var(--color__battleship-grey);
+    font-size: var(--text__preset-5);
+    font-weight: normal;
+  }
+
+  .theme__beige hr {background-color: var(--color__light-grey);}
+
   .theme__beige .nav__list a:not(.button) {
     color: var(--color__davys-grey);
   }
@@ -433,6 +681,17 @@ button.button:not(.icon-button) {
 .theme__light-cyan {
   background-color: var(--color__light-cyan);
 }
+  .theme__light-cyan .nav__list a {
+    color: var(--color__black);
+  }
+    .theme__light-cyan .nav__list a:hover,
+    .theme__light-cyan .nav__list a:focus {
+      color: var(--color__davys-grey);
+    }
+      .theme__light-cyan .nav__list a:focus {
+        box-shadow: var(--focus__ring) var(--color__azure);
+        outline: var(--focus__outline);
+      }
 
 
 
